@@ -4,7 +4,7 @@ html(class='no-js', lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Foundation 5
+    title Gadget Express
     link(rel='stylesheet', href='/css/normalize.css')
     link(rel='stylesheet', href='/css/foundation.css')
     link(rel='stylesheet', href='/css/app.css')
@@ -12,7 +12,100 @@ html(class='no-js', lang='en')
   body
     .row
       .small-12.columns
-        h1 Foundation 5 Template
+        h1: a(href='/') Gadget Express 
+    .row
+      .small-6.columns
+        .row
+          .small-4.columns
+            &nbsp;
+          .small-4.columns
+            button.radius.small#toggle-user Toggle User Form
+          .small-4.columns
+            &nbsp;
+        .row
+          .small-12.columns
+            form.hideUser#user
+              fieldset
+                Legend User
+                .row
+                  .small-12.columns
+                    label Name
+                    input(type='text', name='name')
+                    input(type='hidden', name='_id')
+                .row
+                  .small-12.columns
+                    Label Balance
+                    input(type='text', name'balance')
+                    input(type='hidden', name='purchases')
+                .row
+                  .small-12.columns
+                    Label Picture
+                    input(type='text', name='picture')
+                .row
+                  .small-12.columns
+                    button.tiny.radius#saveUser Save User
+                    button.tiny.radius#updateUser Modify User
+                    button.tiny.radius#removeUser Remove User
+      .small-6.columns
+        .row
+          .small-4.columns
+            &nbsp;
+          .small-4.columns
+            button.radius.small#toggle-gadget Toggle Gadget Form
+          .small-4.columns
+            &nbsp;
+        .row
+          .small-12.columns
+            form.hideGadget#gadget
+              fieldset
+                legend Gadget
+                .row
+                  .small-12.columns
+                    label Name
+                      input(type='text', name='name')
+                      input(type='hidden', name='_id')
+                .row
+                  .small-12.columns
+                    Label Cost
+                      input(type='text', name'cost')
+                .row
+                  .small-12.columns
+                    Label Amount
+                      input(type='text', name='amount')
+                .row
+                  .small-12.columns
+                    Label Picture
+                      input(type='text', name='picture')
+                .row
+                  .small-12.columns
+                    button.tiny.radius#saveGadget Save Gadget
+                    button.tiny.radius#updateGadget Modify Gadget
+                    button.tiny.radius#removeGadget Remove Gadget
+    .row
+      .small-4.columns
+        table#users
+          thead
+            tr
+              th Picture
+              th Name
+              th Balance
+              th Purchases
+            tbody
+      .small-8.columns
+        table#gadgets
+          thead
+            tr
+              th Purchase
+              th Picture
+              th Name
+              th Cost
+              th Amount Avaiable
+              th Buyer
+              th Amount to buy
+              th Confirm Purchase
+            tbody
+
+
 
     script(src='/js/vendor/jquery.js')
     script(src='/js/vendor/foundation.js')
