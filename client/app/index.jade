@@ -91,7 +91,7 @@ html(class='no-js', lang='en')
               th Balance
               th Purchases
             tbody
-      .small-8.columns
+      .small-6.columns
         table#gadgets
           thead
             tr
@@ -100,10 +100,26 @@ html(class='no-js', lang='en')
               th Name
               th Cost
               th Amount Avaiable
-              th Buyer
-              th Amount to buy
-              th Confirm Purchase
             tbody
+      .small-2.columns
+        form.hidepurchase#purchase
+          fieldset
+            legend Gadget
+            .row
+              .small-12
+                Label User Purchasing
+                select#purchaseName
+            .row
+              .small-12
+                Label Amount Purchasing
+                select#purchaseAmount
+            .row
+              .small-12
+                input(type='hidden', name='_id')
+                button.tiny.radius#purchaseGadget Purchase Gadget
+
+
+
 
 
 
