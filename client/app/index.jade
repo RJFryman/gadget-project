@@ -35,7 +35,7 @@ html(class='no-js', lang='en')
                 .row
                   .small-12.columns
                     Label Balance
-                    input(type='text', name'balance')
+                    input(type='text', name='balance')
                     input(type='hidden', name='purchases')
                 .row
                   .small-12.columns
@@ -67,7 +67,7 @@ html(class='no-js', lang='en')
                 .row
                   .small-12.columns
                     Label Cost
-                      input(type='text', name'cost')
+                      input(type='text', name='cost')
                 .row
                   .small-12.columns
                     Label Amount
@@ -102,25 +102,21 @@ html(class='no-js', lang='en')
               th Amount Avaiable
             tbody
       .small-2.columns
-        form.hidepurchase#purchase
+        form.hidePurchase#purchase
           fieldset
             legend Gadget
             .row
               .small-12
                 Label User Purchasing
-                select#purchaseName
+                select#userDropdown
             .row
               .small-12
                 Label Amount Purchasing
-                select#purchaseAmount
+                select#totalDropdown
             .row
               .small-12
                 input(type='hidden', name='_id')
                 button.tiny.radius#purchaseGadget Purchase Gadget
-
-
-
-
 
 
     script(src='/js/vendor/jquery.js')

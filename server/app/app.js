@@ -1,6 +1,6 @@
 'use strict';
 
-var dbname = 'database-name';
+var dbname = 'gadget-express';
 var port = process.env.PORT || 4000;
 
 var d = require('./lib/request-debug');

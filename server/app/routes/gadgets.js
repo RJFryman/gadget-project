@@ -4,7 +4,7 @@ var Gadget = require('../models/gadget');
 var Mongo = require('mongodb');
 
 exports.create = function(req, res){
-  var db = req.app.loacls.db;
+  var db = req.app.locals.db;
   var gadgets = db.collection('gadgets');
 
   var gadget = new Gadget(req.body);
@@ -14,7 +14,7 @@ exports.create = function(req, res){
 };
 
 exports.index = function(req, res){
-  var db = req.app.loacls.db;
+  var db = req.app.locals.db;
   var gadgets = db.collection('gadgets');
   gadgets.find().toArray(function(err, records){
     res.send({gadgets:records});
@@ -22,7 +22,7 @@ exports.index = function(req, res){
 };
 
 exports.update = function(req, res){
-  var db = req.app.loacls.db;
+  var db = req.app.locals.db;
   var gadgets = db.collection('gadgets');
 
   var gadget = new Gadget(req.body);
@@ -35,7 +35,7 @@ exports.update = function(req, res){
 };
 
 exports.delete = function(req, res){
-  var db = req.app.loacls.db;
+  var db = req.app.locals.db;
   var gadgets = db.collection('gadgets');
 
   var id = Mongo.ObjectID(req.params.id);
