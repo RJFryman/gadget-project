@@ -15,13 +15,52 @@
     $('#saveGadget').click(saveGadget);
     $('#users').on('click', '.picture', populateUser);
     $('#gadgets').on('click', '.picture', populateGadget);
+    $('#gadgets').on('click', '.purchase', populateGadget);
     $('#gadgets').on('click', '.purchase', togglePurchase);
     $('#updateUser').click(updateUser);
     $('#updateGadget').click(updateGadget);
     $('#removeUser').click(deleteUser);
     $('#removeGadget').click(deleteGadget);
+    $('#purchaseGadget').click(commitPurchase);
     getUsers();
     getGadgets();
+  }
+  function commitPurchase(){
+    alert('almost there');
+
+    var cost = $('input[name="cost"]').val()*1;
+    var itemName = $('input[name="name"]').val();
+    var amount = $('#totalDropdown').val()*1;
+    var totalCost = cost * amount;
+
+    var username = $('#userDropdown').val();
+    var userRow = $('#users .name:contains('+username+')');
+    var startingBalance = userRow.siblings('.balance').text() * 1;
+    var previousPurchases = userRow.siblings('.purchase').text();
+    var userId = userRow.siblings('.picture').attr('data-user-id');
+    var userpic = userRow.siblings('.picture').css('background-image');
+    var userpicf = userpic.replace('url(','').replace(')','');
+    var available = $('input[name="amount"]').val()*1;
+
+
+    if (startingBalance > totalCost){
+      var newAvailable = available-amount;
+      $('input[name="amount"]').val(newAvailable);
+      updateGadget();
+
+      var newBalance = startingBalance - totalCost;
+      $('input[name="_id"]').val(userId);
+      $('input[name="name"]').val(username);
+      $('input[name="balance"]').val(newBalance);
+      $('input[name="picture"]').val(userpicf);
+      var newpurchase = amount + ' : ' + itemName;
+
+      $('input[name="purchases"]').val(newpurchase+', ' + previousPurchases);
+
+      updateUser();
+      $('#purchase').toggleClass('hidePurchase');
+    }
+    event.preventDefault();
   }
 
 // Toggle Buttons
@@ -35,6 +74,7 @@
 
   function togglePurchase(){
     $('#purchase').toggleClass('hidePurchase');
+    toggleGadget();
     updateDrops();
   }
 
@@ -51,7 +91,15 @@
       $option1.text(text);
       userDropDown.append($option1);
     });
+    var num;
+    num =$('input[name="amount"]').val()*1;
+    var range = _.range(num + 1);
 
+    for (var i = 0; i < range.length; i++){
+      var $option2 = $('<option>');
+      $option2.text(i);
+      totalDropDown.append($option2);
+    }
   }
 
 
@@ -233,7 +281,7 @@
       var $tr = $('.trow[data-user-id="'+data.id+'"]');
       $tr.find('.name').text(data.user.name);
       $tr.find('.balance').text(data.user.balance);
-      $tr.find('.purchases').text(data.user.purchases);
+      $tr.find('.purchase').text(data.user.purchases);
       var url = 'url("' +data.user.picture+'")';
       $tr.find('.picture').css('background', url);
     }
