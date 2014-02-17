@@ -26,8 +26,6 @@
     getGadgets();
   }
   function commitPurchase(){
-    alert('almost there');
-
     var cost = $('input[name="cost"]').val()*1;
     var itemName = $('input[name="name"]').val();
     var amount = $('#totalDropdown').val()*1;
@@ -66,10 +64,13 @@
 // Toggle Buttons
   function toggleUser(){
     $('#user').toggleClass('hideUser');
+    $('input[name="_id"]').val('');
+    $('input[name="purchases"]').val('');
   }
 
   function toggleGadget(){
     $('#gadget').toggleClass('hideGadget');
+    $('input[name="_id"]').val('');
   }
 
   function togglePurchase(){
